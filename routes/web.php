@@ -12,7 +12,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::domain('{tenant}.localhost')->middleware('tenant')->group(function (){
+    Route::get('/', function () {
+        return view('welcome');
+    });
+});
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// in a routes file
+
+Route::middleware('tenant')->group(function() {
+    // routes
 });
